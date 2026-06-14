@@ -1,11 +1,12 @@
 FROM python:3.9-slim
 WORKDIR /app
 
-RUN apt-get update && apt-get install -y wget gnupg unzip curl \
-    && mkdir -p /etc/apt/keyrings \
-    && wget -q -O- https://dl-ssl.google.com/linux/linux_signing_key.pub | gpg --dearmor -o /etc/apt/keyrings/google-chrome.gpg \
-    && echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/google-chrome.gpg] http://dl.google.com/linux/chrome/debian/ stable main" > /etc/apt/sources.list.d/google.list \
-    && apt-get update && apt-get install -y google-chrome-stable
+# Install system utilities and fetch the direct Chrome binary package
+RUN apt-get update && apt-get install -y wget unzip curl \
+    && wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
+    && apt-get install -y ./google-chrome-stable_current_amd64.deb \
+    && rm google-chrome-stable_current_amd64.deb \
+    && apt-get clean
 
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
