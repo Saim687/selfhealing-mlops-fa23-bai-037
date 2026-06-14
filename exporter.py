@@ -7,7 +7,7 @@ CONFIDENCE_METRIC = Gauge('prediction_confidence_score', 'Latest prediction conf
 def poll_app():
     while True:
         try:
-            response = requests.get("http://localhost:32500/api/latest-confidence", timeout=2)
+            response = requests.get("http://192.168.49.2:32500/api/latest-confidence", timeout=2)
             if response.status_code == 200:
                 data = response.json()
                 CONFIDENCE_METRIC.set(data["confidence"])
