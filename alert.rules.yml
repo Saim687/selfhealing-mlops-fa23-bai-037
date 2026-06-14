@@ -1,0 +1,10 @@
+groups:
+  - name: mlops_alerts
+    rules:
+      - alert: ModelConfidenceDrift
+        expr: prediction_confidence_score < 0.623
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Concept drift detected: confidence dropped below threshold 0.623"
