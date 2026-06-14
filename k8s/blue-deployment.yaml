@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: api
-        image: Saim687/sentiment-api:unstable
+        image: saim687/sentiment-api:unstable
         ports:
         - containerPort: 5000
         volumeMounts:
