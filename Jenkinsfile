@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         DOCKER_USER = 'saim687'
-    }
+    } 
     stages {
         stage('Fetch') { 
             steps {
