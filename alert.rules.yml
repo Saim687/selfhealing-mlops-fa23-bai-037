@@ -2,7 +2,7 @@ groups:
   - name: MLOpsAlerts
     rules:
       - alert: ModelConfidenceDrift
-        expr: prediction_confidence_score < 0.7
+        expr: prediction_confidence_score < 0.623
         for: 1m
         labels:
           severity: critical
