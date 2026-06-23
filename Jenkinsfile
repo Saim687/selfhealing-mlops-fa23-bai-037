@@ -4,7 +4,7 @@ pipeline {
         DOCKER_USER = 'saim687'
     }
     stages {
-        stage('Fetch') {
+        stage('Fetch') { 
             steps {
                 checkout scm
             }
